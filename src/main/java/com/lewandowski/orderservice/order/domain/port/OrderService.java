@@ -11,6 +11,7 @@ import java.util.List;
 public final class OrderService {
 
     private final OrderRepository orderRepository;
+    private final OrderPublisher orderPublisher;
 
     public Order get(String id) {
         return orderRepository.findById(id).orElseThrow();
@@ -21,6 +22,9 @@ public final class OrderService {
     }
 
     public Order create(Order order) {
-        return orderRepository.save(order);
+        Order savedOrder = orderRepository.save(order);
+        orderPublisher.send(savedOrder);
+
+        return savedOrder;
     }
 }

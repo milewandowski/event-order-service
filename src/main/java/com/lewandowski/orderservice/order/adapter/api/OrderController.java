@@ -1,10 +1,13 @@
 package com.lewandowski.orderservice.order.adapter.api;
 
+import com.lewandowski.orderservice.order.domain.model.Address;
 import com.lewandowski.orderservice.order.domain.model.Order;
+import com.lewandowski.orderservice.order.domain.model.Status;
 import com.lewandowski.orderservice.order.domain.port.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -29,8 +32,15 @@ class OrderController {
         return orderService.create(order);
     }
 
-    //    @GetMapping("/add")
-    //    Order create() {
-    //        return orderService.create(new Order());
-    //    }
+    @GetMapping("/add")
+    Order create() {
+        Address address = new Address("Poland", "01-234", "Warsaw", "Aleje Jero");
+        Order order = new Order();
+        order.setName("Thomas Shelby");
+        order.setAmount(new BigDecimal("99.87"));
+        order.setStatus(Status.RECEIVED);
+        order.setAddress(address);
+
+        return orderService.create(order);
+    }
 }

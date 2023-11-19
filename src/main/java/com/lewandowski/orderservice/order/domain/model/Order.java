@@ -7,6 +7,8 @@ import lombok.ToString;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
+
 @Document
 @Data
 @ToString
@@ -16,5 +18,10 @@ public class Order {
 
     @Id
     String id;
-
+    String name;
+    String phoneNumber;
+    String emailAddress;
+    Address address;
+    BigDecimal amount;
+    Status status;
 }
