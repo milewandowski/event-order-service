@@ -27,4 +27,8 @@ public final class OrderService {
 
         return savedOrder;
     }
+
+    public void update(Order order) {
+        orderRepository.save(order);
+    }
 }

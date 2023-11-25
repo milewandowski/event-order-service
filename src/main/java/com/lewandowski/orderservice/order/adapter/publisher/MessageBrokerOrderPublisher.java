@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 class MessageBrokerOrderPublisher implements OrderPublisher {
 
-    private final KafkaTemplate<String, Order> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
 
     @Override
     public void send(Order order) {
         log.info("Sending order with id: {}", order.getId());
-        kafkaTemplate.send("order_payment", order);
+        kafkaTemplate.send("order-payment-local2", order);
     }
 }

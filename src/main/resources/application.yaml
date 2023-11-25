@@ -10,9 +10,16 @@ spring:
       username: someUser
       password: dontGuess
   kafka:
+    bootstrap-servers: 127.0.0.1:9092
     producer:
-      bootstrap-servers: 127.0.0.1:9092
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    template:
-      default-topic: order_payment
+      properties:
+        spring.json.add.type.headers: false
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json:
+          trusted.packages: com.lewandowski.orderservice.order.domain.model.*
+          value.default.type: com.lewandowski.orderservice.order.domain.model.Order

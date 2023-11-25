@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Document
 @Data
@@ -24,4 +25,5 @@ public class Order {
     Address address;
     BigDecimal amount;
     Status status;
+    List<String> productIds;
 }
