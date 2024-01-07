@@ -40,7 +40,7 @@ class OrderController {
         order.setAmount(new BigDecimal("99.87"));
         order.setStatus(Status.RECEIVED);
         order.setAddress(address);
-        order.setProductIds(List.of("123", "321"));
+        order.setProductIds(List.of("6564dcc54034f24941433bd4", "6564dcd24034f24941433bd5"));
 
         return orderService.create(order);
     }

@@ -16,7 +16,7 @@ class MessageBrokerOrderPublisher implements OrderPublisher {
 
     @Override
     public void send(Order order) {
-        log.info("Sending order with id: {}", order.getId());
+        log.info("Sending order with id: [{}]", order.getId());
         kafkaTemplate.send("order-payment-local2", order);
     }
 }
