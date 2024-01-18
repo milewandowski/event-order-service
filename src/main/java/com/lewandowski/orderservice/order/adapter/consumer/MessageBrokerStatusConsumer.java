@@ -15,7 +15,7 @@ class MessageBrokerStatusConsumer {
 
     private final OrderService orderService;
 
-    @KafkaListener(topics = "order-status-local2", groupId = "order-service")
+    @KafkaListener(topics = "order-status-changed", groupId = "order-service")
     void consume(@Payload Order order) {
         log.info("Order event received: {}", order);
         orderService.update(order);
